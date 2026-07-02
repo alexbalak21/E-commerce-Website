@@ -78,6 +78,7 @@ export const products: Product[] = [
     category: "sports",
     rating: 4.6,
     reviews: [],
+    isNew: true,
   },
   {
     id: "p8",
