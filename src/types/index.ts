@@ -11,6 +11,7 @@ export interface Review {
   user: string;
   rating: number; // 1–5
   comment: string;
+  date: string; // e.g. "August 14, 2023"
 }
 
 // Main product type
@@ -19,8 +20,11 @@ export interface Product {
   name: string;
   description: string;
   price: number;
-  oldPrice?: number; // optional for discounts
+  oldPrice?: number;
   image: string;
+  images?: string[]; // gallery thumbnails
+  colors?: string[]; // hex values
+  sizes?: string[];
   category: string;
   rating: number;
   reviews: Review[];

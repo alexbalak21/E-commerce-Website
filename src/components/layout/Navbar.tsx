@@ -10,10 +10,10 @@ export default function Navbar({ onLogoClick, onCategoryClick }: NavbarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const navLinks = [
-    { label: "Shop", hasDropdown: true },
-    { label: "On Sale" },
-    { label: "New Arrivals" },
-    { label: "Brands" },
+    { label: "Shop", hasDropdown: true, category: "Casual" },
+    { label: "On Sale", category: "Sale" },
+    { label: "New Arrivals", category: "New Arrivals" },
+    { label: "Brands", category: "Brands" },
   ];
 
   return (
@@ -27,7 +27,7 @@ export default function Navbar({ onLogoClick, onCategoryClick }: NavbarProps) {
           {navLinks.map((link) => (
             <button
               key={link.label}
-              onClick={() => link.label === "Shop" && onCategoryClick?.("Casual")}
+              onClick={() => onCategoryClick?.(link.category)}
               className="text-sm font-medium text-black/80 hover:text-black transition-colors inline-flex items-center gap-0.5"
             >
               {link.label}
@@ -41,7 +41,7 @@ export default function Navbar({ onLogoClick, onCategoryClick }: NavbarProps) {
           <input
             type="text"
             placeholder="Search for products..."
-            className="w-full bg-[#F0F0F0] rounded-full pl-10 pr-4 py-2.5 text-sm placeholder:text-black/40 outline-none focus:ring-2 focus:ring-black/10"
+            className="w-full bg-[#F0F0F0] rounded-full pl-10 pr-4 py-2.5 text-sm text-black placeholder:text-black/40 outline-none focus:ring-2 focus:ring-black/10"
           />
         </div>
 
@@ -75,7 +75,7 @@ export default function Navbar({ onLogoClick, onCategoryClick }: NavbarProps) {
           {navLinks.map((link) => (
             <button
               key={link.label}
-              onClick={() => { link.label === "Shop" && onCategoryClick?.("Casual"); setMobileOpen(false); }}
+              onClick={() => { onCategoryClick?.(link.category); setMobileOpen(false); }}
               className="text-sm font-medium text-black/80 hover:text-black py-1 text-left"
             >
               {link.label}
